@@ -48,13 +48,17 @@ def mostrar_grafico(titulo, especialidades, prim_quad, seg_quad, terc_quad):
         series = [nome]
 
     st.subheader(titulo)
-    st.bar_chart(
+    tab1, tab2 = st.tabs(['Barras', 'Linhas'])
+    tab1.bar_chart(
         grafico,
         x='Especialidade',
         y=series,
         horizontal=False,
         width='stretch',
         height=500
+    )
+    tab2.line_chart(
+        grafico,
     )
 
 
@@ -105,8 +109,8 @@ def relatorio_trat_terapeutico():
 
 opcoes_relatorio = {
     'Relatório de Exames': relatorio_exames,
-    'Atendimentos': relatorio_atendimentos,
-    'Tratamentos terapêuticos': relatorio_trat_terapeutico,
+    'Relatório de Atendimentos': relatorio_atendimentos,
+    'Relatório de Tratamentos terapêuticos': relatorio_trat_terapeutico,
 }
 relatorio_selecionado = st.selectbox(
     'O que você deseja visualizar?',
