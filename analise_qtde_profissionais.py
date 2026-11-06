@@ -6,9 +6,10 @@ st.set_page_config(page_title="Painel de dados")
 
 
 def mostrar_profissionais():
-    st.title('Dados do ambulatório')
+    st.image('pedro_ernesto.jpeg', caption='Hospital Universitário Pedro Ernesto', alt='Imagem do HUPE') # Adicionar imagem
+    st.title('Dados do ambulatório') # Título da página
     st.text('Base de dados simples, sem grandes informações, que mostram a quantidade de profisionais em cada setor. Veja o gráfico comparativo e use a caixa de seleção para visualizar cada ano de 2021-2024')
-    st.markdown("### Profissionais do ambulatório - Especialidade médica")
+    st.markdown("#### Profissionais do ambulatório - Especialidade médica")
     arquivo_dados = Path(__file__).with_name("qtde_profissionais.xlsx")
     dados = pd.read_excel(arquivo_dados, header=None, skiprows=2, usecols=range(5))
 
@@ -29,9 +30,11 @@ def mostrar_profissionais():
         grafico,
         x="Especialidade",
         y=ano_selecionado,
+        horizontal=False,
+        width='stretch'
     )
 
-    st.markdown("### Profissionais do ambulatório - Especialidade não médica")
+    st.markdown("#### Profissionais do ambulatório - Especialidade não médica")
     dados_nao_medicos = pd.read_excel(
         arquivo_dados,
         sheet_name="Planilha3",
@@ -56,6 +59,7 @@ def mostrar_profissionais():
         dados_nao_medicos,
         x="Especialidade",
         y="Quantidade",
+        sort=True
     )
 
 
