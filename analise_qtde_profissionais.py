@@ -63,7 +63,7 @@ def mostrar_profissionais():
     )
 
 
-exames_page = st.Page("pages/exames.py", title="Dados de exames", icon="💉")
+exames_page = st.Page("pages/relatorios.py", title="Relatórios", icon="📜")
 navigation = st.navigation(
     [
         st.Page(
