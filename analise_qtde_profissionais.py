@@ -128,7 +128,16 @@ def mostrar_profissionais():
     )
 
 
-exames_page = st.Page("pages/relatorios.py", title="Relatórios", icon="📜")
+relatorio_2021_page = st.Page(
+    "pages/relatorios_2021.py",
+    title="Relatórios 2021",
+    icon="📜",
+)
+relatorio_2022_page = st.Page(
+    "pages/relatorios_2022.py",
+    title="Relatórios 2022",
+    icon="📜",
+)
 navigation = st.navigation(
     [
         st.Page(
@@ -137,7 +146,8 @@ navigation = st.navigation(
             icon="📊",
             default=True,
         ),
-        exames_page,
+        relatorio_2021_page,
+        relatorio_2022_page,
     ]
 )
 
