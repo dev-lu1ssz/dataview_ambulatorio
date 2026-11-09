@@ -104,6 +104,7 @@ def mostrar_profissionais():
     )
 
     st.markdown("#### Profissionais do ambulatório - Especialidade não médica")
+    tab1, tab2 = st.tabs(["Gráfico de barras", "Dataframe"])
     dados_nao_medicos = pd.read_excel(
         arquivo_dados,
         sheet_name="Planilha3",
@@ -124,11 +125,16 @@ def mostrar_profissionais():
         )
     ]
 
-    st.bar_chart(
+    tab1.bar_chart(
         dados_nao_medicos,
         x="Especialidade",
         y="Quantidade",
         sort=True
+    )
+    tab2.dataframe(
+        dados_nao_medicos,
+        hide_index=True,
+        width="stretch",
     )
 
 mostrar_profissionais()
