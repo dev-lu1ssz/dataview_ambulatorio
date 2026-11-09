@@ -43,12 +43,20 @@ def mostrar_profissionais():
     ]
 
     st.subheader(f"Quantidade de profissionais por setor em {ano_selecionado}")
-    st.bar_chart(
+    tab_grafico_anual, tab_dataframe_anual = st.tabs(
+        ["Gráfico de barras", "Dataframe"]
+    )
+    tab_grafico_anual.bar_chart(
         grafico,
         x="Especialidade",
         y=ano_selecionado,
         horizontal=True,
         width=1200
+    )
+    tab_dataframe_anual.dataframe(
+        grafico,
+        hide_index=True,
+        width="stretch",
     )
 
     st.markdown("#### Profissionais médicos por tipo de vínculo")

@@ -53,13 +53,19 @@ def mostrar_grafico(titulo, especialidades, prim_quad, seg_quad, terc_quad):
         series = [nome]
 
     st.subheader(titulo)
-    st.bar_chart(
+    tab_grafico, tab_dataframe = st.tabs(["Gráfico de barras", "Dataframe"])
+    tab_grafico.bar_chart(
         grafico,
         x='Especialidade',
         y=series,
         horizontal=False,
         width='stretch',
         height=500
+    )
+    tab_dataframe.dataframe(
+        grafico,
+        hide_index=True,
+        width='stretch',
     )
 
     especialidade_selecionada = st.selectbox(
